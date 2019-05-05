@@ -1,3 +1,6 @@
+/*
+ * This code is provided "as is" under the MIT license. We provide no warrantees at all.
+ */
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
