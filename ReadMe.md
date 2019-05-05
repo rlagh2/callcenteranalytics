@@ -1,0 +1,32 @@
+# Cell Center Analytics Sample
+Sample code for processing recorded customer calls using Azure Cognitive Services Text Analytics APIs.
+
+## Pre-requisites
+
+1. Azure subscription [(Free account sign-up)](https://azure.microsoft.com/en-us/free/)
+2. Speech API key [(Sign up here)](https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/)
+3. Text Analytics API key [(Sign up here)](https://azure.microsoft.com/en-us/services/cognitive-services/text-analytics/)
+4. Azure Storage to store your recorded calls (e.g. files in .mp3 format and preferably in stereo)
+
+## Tools
+- Visual Studio 2017
+- C#
+- Text Analytics API SDK
+
+## Running the code
+The sample is a console app written in C#. To get started, 
+1. Clone the repo and open the .sln file using Visual Studio 2017 or 2019. 
+2. Create two containers in your Azure Storage called audio and output
+3. Upload your .mp3 files to audio container (csv results will be written to output container)
+4. Update the Program.cs file with:
+    1. Storage connection string
+    2. Speech API key
+    3. Text Analytics key
+4. Install Cognitive Services Text Analytics API NuGet Package
+
+## Overview
+This sample loads call data from Azure Storage, converts the call to text, then extracts sentiment and key phrases and stores them in a CSV file for analysis.  Speech API calls are based on [this sample](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch).
+
+## The overall workflow
+
+![](azure-inbound.svg)
