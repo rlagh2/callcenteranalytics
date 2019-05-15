@@ -16,3 +16,23 @@ Steps to use new Azure Blob source:
 4.	Select “Call Input” table on left pane.
 
 ![call](screenshots/call.jpg)
+
+5.	Select “Source” on Applied Steps (right pane).
+6.	Double Click on “Source”. This will open a small new window.
+
+![source](screenshots/source.JPG)
+
+7.	Enter the account name. Select ok
+8.	Enter the account key. Select ok.
+9.	In Applied Steps (right pane), Select Final Step. Wait for refresh to complete.
+10.	Select “Call Category” table on left pane.
+11.	Follow Steps 3 to 8.
+12.	Select “Close & Apply”.
+
+![apply](screenshots/apply.JPG)
+
+13.	Window will close and refresh the charts.
+14.	All the charts are now refreshed, and Report is ready is use.
+
+
+Note: Key phrases can be filtered on Filter pane. Remove any irrelevant key phrases. This filter applies to all pages of the report. 
