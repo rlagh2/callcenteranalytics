@@ -27,6 +27,15 @@ The sample is a console app written in C#. To get started,
 ## Overview
 This sample loads call data from Azure Storage, converts the call to text, then extracts sentiment and key phrases and stores them in a CSV file for analysis.  Speech API calls are based on [this sample](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch).
 
+After CSV files are created, you can use the PBI dashboard to view the visualizations.
+
 ## The overall workflow
 
 ![](azure-inbound.svg)
+
+## Power BI
+
+The PBIX file and instructions to create the visualizations are included in the PowerBI folder. Sample view:
+
+![](PowerBI/screenshots/view2.JPG)
+
