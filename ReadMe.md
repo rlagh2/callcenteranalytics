@@ -37,5 +37,5 @@ After CSV files are created, you can use the PBI dashboard to view the visualiza
 
 The PBIX file and instructions to create the visualizations are included in the PowerBI folder. Sample view:
 
-![](PowerBI/screenshots/view2.JPG)
+![](PowerBI/screenshots/view3.JPG)
 
