@@ -10,3 +10,9 @@ Steps to use new Azure Blob source:
 1.    Open Power BI app.
 2.    Open call center solution (PBIX File). (File -> Open ->Browse -> Select file)
 3.    Select “Edit Queries”. This opens a new window.
+
+![edit](screenshots/edit.JPG)
+
+4.	Select “Call Input” table on left pane.
+
+![call](screenshots/call.jpg)
