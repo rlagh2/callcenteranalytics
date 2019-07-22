@@ -5,7 +5,7 @@ Cognitive Search is a feature of Azure Search which enables the ingestion of lrg
 
 You will need a provisioned Azure Search instance to continue. To use this sample:
 + Deploy the [Azure Function](https://github.com/vkurpad/callcenteranalytics/tree/master/CognitiveSearch/SkillsFunctions/Skills "Skills Function")
-+ Use the [REST API requests](https://github.com/vkurpad/callcenteranalytics/tree/master/CognitiveSearch/SearchAPIs "Request payloads")to create the following resources (PUT Requests). See the  [REST API documentation](https://docs.microsoft.com/en-us/rest/api/searchservice/ "API docs")for additional information
++ Use the [REST API requests](https://github.com/vkurpad/callcenteranalytics/tree/master/CognitiveSearch/SearchAPIs "Request payloads")to create the following resources (PUT Requests). See the  [REST API documentation](https://docs.microsoft.com/en-us/rest/api/searchservice/ "API docs") for additional information
   + Datasource (Blob storage account where your files from the transcribe process are saved)
   + Skillset 
     + Update the Cognitive Services Key to call the Text Analytics skills
