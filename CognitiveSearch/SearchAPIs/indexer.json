@@ -1,0 +1,37 @@
+{
+    "name": "callcenter-idxr",
+    "description": "",
+    "dataSourceName": "callcenter-ds",
+    "skillsetName": "callcentertest-ss",
+    "targetIndexName": "callcenter-index",
+    "disabled": null,
+    "schedule": null,
+    "parameters": {
+        "batchSize": null,
+        "maxFailedItems": null,
+        "maxFailedItemsPerBatch": null,
+        "base64EncodeKeys": false,
+        "configuration": {
+            "dataToExtract": "contentAndMetadata",
+            "firstLineContainsHeaders": false,
+            "delimitedTextDelimiter": ","
+        }
+    },
+    "fieldMappings": [
+        {
+            "sourceFieldName": "metadata_storage_path",
+            "targetFieldName": "metadata_storage_path",
+            "mappingFunction": {
+                "name": "base64Encode",
+                "parameters": null
+            }
+        }
+    ],
+    "outputFieldMappings": [
+        {
+            "sourceFieldName": "/document/shapedConversation",
+            "targetFieldName": "conversation",
+            "mappingFunction": null
+        }
+    ]
+}
