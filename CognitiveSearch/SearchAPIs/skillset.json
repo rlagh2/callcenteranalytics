@@ -1,0 +1,203 @@
+{
+    
+    "name": "callcentertest-ss",
+    "description": "skillset to enrich transcribed text",
+    "skills": [
+        {
+            "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+            "name": "#7",
+            "description": "Extract Conversations",
+            "context": "/document/content",
+            "uri": "[TODO: Your Azure Functions URI goes here]",
+            "httpMethod": "POST",
+            "timeout": "PT30S",
+            "batchSize": 1,
+            "inputs": [
+                {
+                    "name": "content",
+                    "source": "/document/content",
+                    "sourceContext": null,
+                    "inputs": []
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "conversation",
+                    "targetName": "conversation"
+                },
+                {
+                    "name": "customer",
+                    "targetName": "customerUtterances"
+                }
+            ]
+        },
+        {
+            "@odata.type": "#Microsoft.Skills.Text.KeyPhraseExtractionSkill",
+            "name": "#1",
+            "description": null,
+            "context": "/document/content/conversation/Turns/*",
+            "defaultLanguageCode": "en",
+            "maxKeyPhraseCount": null,
+            "inputs": [
+                {
+                    "name": "text",
+                    "source": "/document/content/conversation/Turns/*/Utterance",
+                    "sourceContext": null,
+                    "inputs": []
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "keyPhrases",
+                    "targetName": "Keyphrases"
+                }
+            ]
+        },
+        {
+            "@odata.type": "#Microsoft.Skills.Text.LanguageDetectionSkill",
+            "name": "#3",
+            "description": null,
+            "context": "/document",
+            "inputs": [
+                {
+                    "name": "text",
+                    "source": "/document/content",
+                    "sourceContext": null,
+                    "inputs": []
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "languageCode",
+                    "targetName": "myLanguageCode"
+                }
+            ]
+        },
+        {
+            "@odata.type": "#Microsoft.Skills.Text.SentimentSkill",
+            "name": "#4",
+            "description": null,
+            "context": "/document/content/conversation/Turns/*",
+            "defaultLanguageCode": "en",
+            "inputs": [
+                {
+                    "name": "text",
+                    "source": "/document/content/conversation/Turns/*/Utterance",
+                    "sourceContext": null,
+                    "inputs": []
+                },
+                {
+                    "name": "languageCode",
+                    "source": "/document/myLanguageCode",
+                    "sourceContext": null,
+                    "inputs": []
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "score",
+                    "targetName": "Sentiment"
+                }
+            ]
+        },
+        {
+            "@odata.type": "#Microsoft.Skills.Util.ShaperSkill",
+            "name": "#5",
+            "description": null,
+            "context": "/document",
+            "inputs": [
+                {
+                    "name": "turns",
+                    "source": null,
+                    "sourceContext": "/document/content/conversation/Turns/*",
+                    "inputs": [
+                        {
+                            "name": "sequence",
+                            "source": "/document/content/conversation/Turns/*/SeqNbr",
+                            "sourceContext": null,
+                            "inputs": []
+                        },
+                        {
+                            "name": "speaker",
+                            "source": "/document/content/conversation/Turns/*/Speaker",
+                            "sourceContext": null,
+                            "inputs": []
+                        },
+                        {
+                            "name": "utterance",
+                            "source": "/document/content/conversation/Turns/*/Utterance",
+                            "sourceContext": null,
+                            "inputs": []
+                        },
+                        {
+                            "name": "sentiment",
+                            "source": "/document/content/conversation/Turns/*/Sentiment",
+                            "sourceContext": null,
+                            "inputs": []
+                        },
+                        {
+                            "name": "keyphrases",
+                            "source": "/document/content/conversation/Turns/*/Keyphrases/*",
+                            "sourceContext": null,
+                            "inputs": []
+                        }
+                    ]
+                },
+                {
+                    "name": "count",
+                    "source": "/document/content/conversation/Count",
+                    "sourceContext": null,
+                    "inputs": []
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "output",
+                    "targetName": "shapedConversation"
+                }
+            ]
+        }
+    ],
+    "cognitiveServices": {
+        "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
+        "description": "[ToDo: Add  Description]",
+        "key": "[ToDo: set to valid cognitive services key]"
+    },
+    "knowledgeStore": {
+        "storageConnectionString": "[ToDo: Set to valid Storage Account Connection String]",
+        "projections": [
+            {
+                "tables": [
+                    {
+                        "tableName": "Conversations",
+                        "generatedKeyName": "ConversationId",
+                        "source": "/document/shapedConversation",
+                        "sourceContext": null,
+                        "inputs": []
+                    },
+                    {
+                        "tableName": "Dialogs",
+                        "generatedKeyName": "DialogId",
+                        "source": "/document/shapedConversation/turns/*",
+                        "sourceContext": null,
+                        "inputs": []
+                    },
+                    {
+                        "tableName": "Keyphrases",
+                        "generatedKeyName": "KeyphraseId",
+                
+                        "sourceContext": "/document/shapedConversation/turns/*/keyphrases/*",
+                        "inputs": [
+                            {
+                                "name": "Keyphrases",
+                                "source": "/document/shapedConversation/turns/*/keyphrases/*"
+                            }
+                        ]
+                        
+                    }
+                ],
+                "objects": []
+            }
+        ]
+    }
+}
