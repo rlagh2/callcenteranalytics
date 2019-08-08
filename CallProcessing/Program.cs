@@ -35,6 +35,7 @@ namespace CallProcessing
         private const string Output_container_name = "output";
 
         // Update with your speech service region (in https://portal.azure.com, see your Speech Service's Overview section)
+        // Note, "https://" shoud not be included in the HostName
         private const string HostName = "<YourServiceRegion>.cris.ai";
         private const string Speech_SubscriptionKey = "<YourServiceKey>";
         private const int Port = 443;
@@ -334,43 +335,34 @@ namespace CallProcessing
             }
             return conversation;
         }
-        //Get sentiment
+        //Get sentiment        //Get sentiment
         public static async Task<double?> SentimentAnalysisAsync(TextAnalyticsClient client,string input)
         {
 
             //The documents to be analyzed. Add the language of the document. The ID can be any value.
             var sentimentResults = await client.SentimentAsync(
-                false,
-                new MultiLanguageBatchInput(
-                    new List<MultiLanguageInput>
-                    {
-                        new MultiLanguageInput("en", "1", input)
-                    }));
+                input,
+                "en",
+                false);
 
             //Return the results
-            return sentimentResults.Documents[0].Score;
+            return sentimentResults.Score;
         }
         //Call key phrase service
         public static async Task<List<string>> KeyPhraseAsync(TextAnalyticsClient client, string input)
         {
             //The documents to be analyzed. Add the language of the document. The ID can be any value.
             var kpResults = await client.KeyPhrasesAsync(
-                false,
-                new MultiLanguageBatchInput(
-                    new List<MultiLanguageInput>
-                    {
-                        new MultiLanguageInput("en", "1", input)
-                    }));
+                input,
+                "en",
+                false);
 
             //Return the results
             List<string> kpList = new List<string>();
             // Printing keyphrases
-            foreach (var document in kpResults.Documents)
+            foreach (var keyphrase in kpResults.KeyPhrases)
             {
-                foreach (string keyphrase in document.KeyPhrases)
-                {
-                    kpList.Add(keyphrase);
-                }
+                    kpList.Add(keyphrase); 
             }
             return kpList;
         }
