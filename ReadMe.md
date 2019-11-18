@@ -19,7 +19,7 @@ The sample is referenced by this [(blog post)](https://azure.microsoft.com/en-us
 The sample is a console app written in C#. To get started, 
 1. Clone the repo and open the .sln file using Visual Studio 2017 or 2019. 
 2. Create two containers in your Azure Storage called audio and output
-3. Upload your .mp3 files to audio container (csv results will be written to output container)
+3. Upload mp3 files to audio container (see SampleAudio folder)
 4. Update the Program.cs file with:
     1. Storage connection string
     2. Speech API key
