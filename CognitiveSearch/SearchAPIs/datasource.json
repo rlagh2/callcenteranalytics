@@ -1,0 +1,15 @@
+{
+    "name": "callcenter-ds",
+    "description": null,
+    "type": "azureblob",
+    "subtype": null,
+    "credentials": {
+        "connectionString": null
+    },
+    "container": {
+        "name": "output",
+        "query": null
+    },
+    "dataChangeDetectionPolicy": null,
+    "dataDeletionDetectionPolicy": null
+}
