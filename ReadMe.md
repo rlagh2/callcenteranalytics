@@ -1,4 +1,4 @@
-# Cell Center Analytics Sample
+# Call Center Analytics Sample
 Sample code for processing recorded customer calls using Azure Cognitive Services Text Analytics APIs.
 
 The sample is referenced by this [(blog post)](https://azure.microsoft.com/en-us/blog/using-text-analytics-in-call-centers/).
