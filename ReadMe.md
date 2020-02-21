@@ -3,6 +3,9 @@ Sample code for processing recorded customer calls using Azure Cognitive Service
 
 The sample is referenced by this [(blog post)](https://azure.microsoft.com/en-us/blog/using-text-analytics-in-call-centers/).
 
+<strong>[New]</strong>
+Added a no-code example using Power Automate [here](https://github.com/rlagh2/textanalytics/blob/master/no-code%20examples/speech%20and%20text%20apis/Converting%20audio%20to%20text%20-%20Part%20I.md).
+
 ## Pre-requisites
 
 1. Azure subscription [(Free account sign-up)](https://azure.microsoft.com/en-us/free/)
