@@ -6,7 +6,7 @@ The sample is referenced by this [(blog post)](https://azure.microsoft.com/en-us
 Added a no-code example using Power Automate [here](https://github.com/rlagh2/textanalytics/blob/master/no-code%20examples/speech%20and%20text%20apis/Converting%20audio%20to%20text%20-%20Part%20I.md).
 
 <strong>[New]</strong>
-Added new version using Python with additional AI driven metrics and insights. [here](https://github.com/rlagh2/callcenteranalytics2.0)
+Added a new version using Python with additional AI driven metrics and insights. [here](https://github.com/rlagh2/callcenteranalytics2.0)
 
 ## Pre-requisites
 
